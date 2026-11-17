@@ -71,3 +71,11 @@ blockquote { border-left: 2px solid var(--line); margin-left: 0; padding-left: 1
 @media (max-width: 42rem) {
   .avatar { width: 144px; }
 }
+
+.archive-entries li { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr) auto; align-items: baseline; gap: .6rem; }
+.archive-entries time, .archive-kind { color: var(--muted); font-size: .85rem; white-space: nowrap; }
+.archive-entries time { font-variant-numeric: tabular-nums; }
+@media (max-width: 28rem) {
+  .archive-entries li { grid-template-columns: 3rem minmax(0, 1fr); gap: .15rem .5rem; }
+  .archive-kind { grid-column: 2; }
+}

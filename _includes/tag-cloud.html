@@ -3,25 +3,32 @@
 {% for document in documents %}
   {% if document.tags %}{% assign tags = tags | concat: document.tags %}{% endif %}
 {% endfor %}
-{% assign remaining_tags = tags | uniq | sort_natural %}
-{% assign display_count = remaining_tags.size | at_most: 10 %}
+{% assign unique_tags = tags | uniq | sort_natural %}
+{% assign display_count = unique_tags.size | at_most: 10 %}
 {% assign rank_range = display_count | minus: 1 | at_least: 1 %}
-{% if remaining_tags.size > 0 %}
+{% assign shown = '|' %}
+{% if display_count > 0 %}
 <nav class="tag-cloud" aria-label="常用标签">
-  {% for rank in (1..10) %}
-    {% if remaining_tags.size == 0 %}{% break %}{% endif %}
+  {% for rank in (1..display_count) %}
     {% assign top_count = 0 %}
-    {% for tag in remaining_tags %}
-      {% assign matches = documents | where_exp: 'document', 'document.tags contains tag' %}
-      {% if matches.size > top_count %}
-        {% assign top_tag = tag %}
-        {% assign top_count = matches.size %}
-      {% endif %}
+    {% for tag in unique_tags %}
+      {% assign tag_key = tag | url_encode | prepend: '|' | append: '|' %}
+      {% unless shown contains tag_key %}
+        {% assign count = 0 %}
+        {% for occurrence in tags %}
+          {% if occurrence == tag %}{% assign count = count | plus: 1 %}{% endif %}
+        {% endfor %}
+        {% if count > top_count %}
+          {% assign top_count = count %}
+          {% assign top_tag = tag %}
+        {% endif %}
+      {% endunless %}
     {% endfor %}
     {% if top_count == 0 %}{% break %}{% endif %}
+    {% assign top_encoded = top_tag | url_encode %}
+    {% assign shown = shown | append: top_encoded | append: '|' %}
     {% assign size = display_count | minus: rank | times: 9 | divided_by: rank_range | plus: 13 %}
-    <a style="--tag-size: {{ size }}px" href="{{ '/tags/' | relative_url }}#tag-{{ top_tag | url_encode | replace: '+', '%20' }}">{{ top_tag | escape }}</a>
-    {% assign remaining_tags = remaining_tags | where_exp: 'tag', 'tag != top_tag' %}
+    <a style="--tag-size: {{ size }}px" href="{{ '/tags/' | relative_url }}#tag-{{ top_encoded | replace: '+', '%20' }}">{{ top_tag | escape }}</a>
   {% endfor %}
 </nav>
 {% endif %}

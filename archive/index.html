@@ -1,0 +1,31 @@
+---
+layout: page
+title: 归档
+description: 按时间回看文章、学习笔记和英语学习。
+permalink: /archive/
+---
+{% assign entries = site.posts | concat: site.notes | concat: site.english | sort: 'date' | reverse %}
+{% assign years = entries | group_by_exp: 'entry', "entry.date | date: '%Y'" %}
+{% if years.size == 0 %}
+<p class="muted">暂无归档内容。</p>
+{% else %}
+  {% for year in years %}
+  <section aria-labelledby="archive-{{ year.name }}">
+    <h2 id="archive-{{ year.name }}">{{ year.name }} 年</h2>
+    <ul class="entries archive-entries">
+      {% for entry in year.items %}
+        {% case entry.collection %}
+          {% when 'notes' %}{% assign kind = '学习笔记' %}
+          {% when 'english' %}{% assign kind = '英语学习' %}
+          {% else %}{% assign kind = '文章' %}
+        {% endcase %}
+      <li>
+        <time datetime="{{ entry.date | date: '%Y-%m-%d' }}">{{ entry.date | date: '%m-%d' }}</time>
+        <a class="entry-title" href="{{ entry.url | relative_url }}">{{ entry.title | escape }}</a>
+        <span class="archive-kind">{{ kind }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+{% endif %}
