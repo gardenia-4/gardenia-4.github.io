@@ -1,4 +1,4 @@
-# Fern 的个人主页 · 使用教程
+# Fern's Blog · 使用教程
 
 [访问博客](https://gardenia-4.github.io/) · [查看发布进度](https://github.com/gardenia-4/gardenia-4.github.io/actions)
 
