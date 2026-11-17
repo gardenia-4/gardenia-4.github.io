@@ -3,6 +3,7 @@ title: 示例项目
 description: 这个模板可用于产品方案、AI 原型或技术实践。
 date: 2026-01-01
 tags: [作品集]
+featured: true
 ---
 这是可替换的写作示例。
 
