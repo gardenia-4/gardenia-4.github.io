@@ -3,6 +3,7 @@ title: "[填写标题]"
 description: "[填写一句摘要]"
 date: 2026-01-01
 tags: [作品集]
+featured: false
 ---
 ## 背景与目标
 

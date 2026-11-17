@@ -1,23 +1,52 @@
 ---
 layout: default
 ---
-<section class="hero">
-  <h1>{{ site.title | escape }}</h1>
-  <p>记录产品思考、AI 学习和技术实践。把正在探索的问题写成笔记，把做过的尝试整理成可复盘的项目。</p>
-  <div class="actions">
-    <a class="button" href="{{ '/projects/' | relative_url }}">查看项目作品</a>
+<div class="home">
+  <aside class="profile" aria-label="个人简介">
+    <div class="mascot" aria-hidden="true">
+      <span class="bubble bubble-one"></span>
+      <span class="bubble bubble-two"></span>
+      <span class="bubble bubble-three"></span>
+      <img src="{{ '/assets/jellyfish.png' | relative_url }}" width="96" height="96" alt="">
+    </div>
+    <h1>{{ site.title | escape }}</h1>
+    <p>{{ site.description | escape }}</p>
     <a href="{{ '/about/' | relative_url }}">关于我 →</a>
+  </aside>
+
+  <div class="home-content">
+    <figure class="motto">
+      <blockquote>
+        <p>知人者智，自知者明。<br>胜人者有力，自胜者强。</p>
+      </blockquote>
+      <figcaption>——《道德经》第三十三章</figcaption>
+    </figure>
+
+    <section class="home-section" aria-labelledby="featured">
+      <div class="section-heading">
+        <h2 id="featured">精选项目</h2>
+        <a href="{{ '/projects/' | relative_url }}">全部项目 →</a>
+      </div>
+      {% assign featured = site.projects | where: 'featured', true | sort: 'date' | reverse %}
+      {% include list.html items=featured limit=3 %}
+    </section>
+
+    <section class="home-section" aria-labelledby="latest">
+      <div class="section-heading">
+        <h2 id="latest">近期文章</h2>
+        <a href="{{ '/blog/' | relative_url }}">全部文章 →</a>
+      </div>
+      {% include list.html items=site.posts limit=4 %}
+    </section>
+
+    <section class="home-section" aria-labelledby="learning">
+      <div class="section-heading">
+        <h2 id="learning">学习笔记</h2>
+        <a href="{{ '/notes/' | relative_url }}">全部笔记 →</a>
+      </div>
+      {% assign notes = site.notes | sort: 'date' | reverse %}
+      {% include list.html items=notes limit=3 %}
+      <a class="english-link" href="{{ '/english/' | relative_url }}">英语学习 →</a>
+    </section>
   </div>
-</section>
-<section aria-labelledby="sections">
-  <h2 id="sections">从这里开始</h2>
-  <div class="grid">
-    <a href="{{ '/blog/' | relative_url }}"><strong>博客</strong><span>产品、AI、技术与阅读思考</span></a>
-    <a href="{{ '/notes/' | relative_url }}"><strong>学习笔记</strong><span>概念、练习与待解决的问题</span></a>
-    <a href="{{ '/english/' | relative_url }}"><strong>英语学习</strong><span>表达积累、专业阅读和口语练习</span></a>
-  </div>
-</section>
-<section aria-labelledby="latest">
-  <h2 id="latest">最新文章</h2>
-  {% include list.html items=site.posts limit=4 %}
-</section>
+</div>

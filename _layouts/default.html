@@ -10,14 +10,20 @@
 <body>
   <a class="skip" href="#main">跳到正文</a>
   <header class="shell top">
-    <a class="brand" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+    <a class="brand" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>{{ site.title | escape }}</a>
     <nav aria-label="主导航">
+      {% assign current_section = page.url | remove_first: '/' | split: '/' | first %}
       {% for item in site.data.navigation %}
-      <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title | escape }}</a>
+      {% assign item_section = item.url | remove_first: '/' | split: '/' | first %}
+      {% assign related_section = item_section %}
+      {% if item.related %}
+        {% assign related_section = item.related | remove_first: '/' | split: '/' | first %}
+      {% endif %}
+      <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% elsif current_section == item_section or current_section == related_section %} aria-current="true"{% endif %}>{{ item.title | escape }}</a>
       {% endfor %}
     </nav>
   </header>
   <main id="main" class="shell">{{ content }}</main>
-  <footer class="shell footer">{{ site.title | escape }} · {{ site.description | escape }}</footer>
+  <footer class="shell footer"><span class="wave" aria-hidden="true"></span>{{ site.title | escape }}</footer>
 </body>
 </html>
