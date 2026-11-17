@@ -1,0 +1,8 @@
+---
+layout: page
+title: 英语学习
+description: 积累表达、专业阅读与口语练习。
+permalink: /english/
+---
+{% assign entries = site.english | sort: 'date' | reverse %}
+{% include list.html items=entries %}

@@ -1,0 +1,14 @@
+---
+layout: page
+title: 搜索
+description: 按标题、摘要、分类或标签搜索文章、项目和笔记。
+permalink: /search/
+---
+<div id="search-controls" hidden>
+  <label for="query">关键词</label>
+  <input id="query" type="search" placeholder="例如 AI 产品" autocomplete="off">
+  <p id="search-status" aria-live="polite"></p>
+</div>
+{% assign documents = site.posts | concat: site.projects | concat: site.notes | concat: site.english %}
+<div id="search-results">{% include list.html items=documents %}</div>
+<script src="{{ '/assets/search.js' | relative_url }}" defer></script>

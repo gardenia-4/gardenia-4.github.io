@@ -1,0 +1,22 @@
+---
+layout: page
+title: 博客
+description: 按主题整理产品、AI、技术和阅读思考。
+permalink: /blog/
+---
+{% assign topics = '产品|AI|技术|阅读与思考' | split: '|' %}
+{% assign extra_topics = site.categories | map: 'first' %}
+{% assign topics = topics | concat: extra_topics | uniq %}
+<nav class="meta" aria-label="博客分类">
+  {% for topic in topics %}
+  <a href="#category-{{ topic | url_encode | replace: '+', '%20' }}">{{ topic | escape }}</a>
+  {% endfor %}
+  <a href="{{ '/tags/' | relative_url }}">全部标签</a>
+</nav>
+{% for topic in topics %}
+<section id="category-{{ topic | escape }}">
+  <h2>{{ topic | escape }}</h2>
+  {% assign posts = site.categories[topic] %}
+  {% include list.html items=posts %}
+</section>
+{% endfor %}

@@ -1,0 +1,14 @@
+- title: 首页
+  url: /
+- title: 关于我
+  url: /about/
+- title: 博客
+  url: /blog/
+- title: 项目作品
+  url: /projects/
+- title: 学习笔记
+  url: /notes/
+- title: 英语学习
+  url: /english/
+- title: 搜索
+  url: /search/

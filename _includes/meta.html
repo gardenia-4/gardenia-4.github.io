@@ -1,0 +1,11 @@
+{% if include.item.date or include.item.categories.size > 0 or include.item.tags.size > 0 %}
+<div class="meta">
+  {% if include.item.date %}<time datetime="{{ include.item.date | date: '%Y-%m-%d' }}">{{ include.item.date | date: '%Y-%m-%d' }}</time>{% endif %}
+  {% for category in include.item.categories %}
+  <a href="{{ '/blog/' | relative_url }}#category-{{ category | url_encode | replace: '+', '%20' }}">{{ category | escape }}</a>
+  {% endfor %}
+  {% for tag in include.item.tags %}
+  <a href="{{ '/tags/' | relative_url }}#tag-{{ tag | url_encode | replace: '+', '%20' }}">#{{ tag | escape }}</a>
+  {% endfor %}
+</div>
+{% endif %}

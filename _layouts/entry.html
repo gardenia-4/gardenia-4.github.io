@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<article class="prose">
+  <header class="page-head">
+    <h1>{{ page.title | escape }}</h1>
+    {% include meta.html item=page %}
+    {% if page.description %}<p>{{ page.description | escape }}</p>{% endif %}
+  </header>
+  {{ content }}
+</article>

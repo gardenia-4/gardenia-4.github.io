@@ -1,0 +1,8 @@
+---
+layout: page
+title: 项目作品
+description: 整理问题、取舍、过程与可验证的产出。
+permalink: /projects/
+---
+{% assign entries = site.projects | sort: 'date' | reverse %}
+{% include list.html items=entries %}

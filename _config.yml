@@ -1,0 +1,28 @@
+title: 我的数字花园
+description: 产品、AI 与技术的学习和实践记录
+lang: zh-CN
+url: "https://gardenia-4.github.io"
+baseurl: ""
+timezone: Asia/Shanghai
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title/
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+  notes:
+    output: true
+    permalink: /notes/:name/
+  english:
+    output: true
+    permalink: /english/:name/
+defaults:
+  - scope: {path: "", type: posts}
+    values: {layout: entry}
+  - scope: {path: "", type: projects}
+    values: {layout: entry}
+  - scope: {path: "", type: notes}
+    values: {layout: entry}
+  - scope: {path: "", type: english}
+    values: {layout: entry}
+exclude: [README.md, templates, Gemfile, Gemfile.lock, vendor]

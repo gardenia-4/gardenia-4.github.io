@@ -1,0 +1,13 @@
+{% if include.items.size > 0 %}
+<ul class="entries">
+  {% for item in include.items limit:include.limit %}
+  <li>
+    <a class="entry-title" href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>
+    {% if item.description %}<p>{{ item.description | escape }}</p>{% endif %}
+    {% include meta.html item=item %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="muted">这里还没有内容。</p>
+{% endif %}

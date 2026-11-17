@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<section class="hero">
+  <h1>{{ site.title | escape }}</h1>
+  <p>记录产品思考、AI 学习和技术实践。把正在探索的问题写成笔记，把做过的尝试整理成可复盘的项目。</p>
+  <div class="actions">
+    <a class="button" href="{{ '/projects/' | relative_url }}">查看项目作品</a>
+    <a href="{{ '/about/' | relative_url }}">关于我 →</a>
+  </div>
+</section>
+<section aria-labelledby="sections">
+  <h2 id="sections">从这里开始</h2>
+  <div class="grid">
+    <a href="{{ '/blog/' | relative_url }}"><strong>博客</strong><span>产品、AI、技术与阅读思考</span></a>
+    <a href="{{ '/notes/' | relative_url }}"><strong>学习笔记</strong><span>概念、练习与待解决的问题</span></a>
+    <a href="{{ '/english/' | relative_url }}"><strong>英语学习</strong><span>表达积累、专业阅读和口语练习</span></a>
+  </div>
+</section>
+<section aria-labelledby="latest">
+  <h2 id="latest">最新文章</h2>
+  {% include list.html items=site.posts limit=4 %}
+</section>
