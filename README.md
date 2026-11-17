@@ -17,8 +17,7 @@
 | --- | --- | --- |
 | 产品、AI、技术、读书心得 | [`_posts/`](_posts/) | `2026-11-17-ai-notes.md` |
 | 项目方案、原型、复盘 | [`_projects/`](_projects/) | `reading-assistant.md` |
-| 学习笔记、练习、实验记录 | [`_notes/`](_notes/) | `llm-evaluation.md` |
-| 英语阅读、口语、面试表达 | [`_english/`](_english/) | `interview-expressions.md` |
+| 学习笔记、英语练习、实验记录 | [`_notes/`](_notes/) | `llm-evaluation.md` |
 
 ### 写一篇文章
 
@@ -49,9 +48,9 @@ tags: [AI, 学习记录]
 
 ### 写笔记或展示项目
 
-- 学习笔记和英语学习使用 `英文短名.md` 命名。在文件顶部填写 `title`、`description`、`date: YYYY-MM-DD` 和 `tags`，省去文章专用的 `categories`。
+- 学习笔记使用 `英文短名.md` 命名。在文件顶部填写 `title`、`description`、`date: YYYY-MM-DD` 和 `tags`，省去文章专用的 `categories`。英语阅读、口语、面试表达等笔记也放在 `_notes/`，可添加 `英语` 标签。
 - 展示项目时可以复制 [项目模板](templates/projects.md)。在开头填写 `featured: true`，项目就能参与首页精选排序。首页最多显示三个精选项目，按日期从新到旧排列。改为 `featured: false` 后，项目仍可在项目页查看。
-- 文章、学习笔记和英语学习会自动进入[归档](https://gardenia-4.github.io/archive/)，按年份从新到旧排列。首页词云最多显示 10 个常用标签。搜索会匹配标题、摘要、分类和标签。
+- 文章和学习笔记会自动进入[归档](https://gardenia-4.github.io/archive/)，按年份从新到旧排列。首页词云最多显示 10 个常用标签。搜索会匹配标题、摘要、分类和标签。
 
 ## 换头像、改邮箱或发公告
 

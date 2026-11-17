@@ -1,4 +1,4 @@
-{% assign documents = site.posts | concat: site.projects | concat: site.notes | concat: site.english %}
+{% assign documents = site.posts | concat: site.projects | concat: site.notes %}
 {% assign tags = '' | split: ',' %}
 {% for document in documents %}
   {% if document.tags %}{% assign tags = tags | concat: document.tags %}{% endif %}

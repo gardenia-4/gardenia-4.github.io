@@ -30,11 +30,10 @@ h2 { font-size: 1.35rem; }
 .home { display: grid; grid-template-columns: minmax(0, 12.25rem) minmax(0, 1fr); gap: clamp(2rem, 7vw, 5rem); }
 .profile { align-self: start; padding-bottom: 1.2rem; }
 .profile p { color: var(--muted); margin-block: .5rem .7rem; }
-.section-heading a, .english-link { font-size: .91rem; }
+.section-heading a { font-size: .91rem; }
 .home-section + .home-section { margin-top: 2.25rem; }
 .section-heading { display: flex; align-items: baseline; flex-wrap: wrap; justify-content: space-between; gap: .2rem 1rem; border-bottom: 1px solid var(--line); padding-bottom: .65rem; }
 .section-heading h2 { margin: 0; }
-.english-link { display: inline-block; margin-top: .35rem; }
 .prose { max-width: 47rem; overflow-wrap: anywhere; }
 .page-head { margin-bottom: 2rem; }
 .prose section { margin-top: 2rem; }

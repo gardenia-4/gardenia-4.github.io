@@ -19,16 +19,11 @@ collections:
   notes:
     output: true
     permalink: /notes/:name/
-  english:
-    output: true
-    permalink: /english/:name/
 defaults:
   - scope: {path: "", type: posts}
     values: {layout: entry}
   - scope: {path: "", type: projects}
     values: {layout: entry}
   - scope: {path: "", type: notes}
-    values: {layout: entry}
-  - scope: {path: "", type: english}
     values: {layout: entry}
 exclude: [README.md, templates, Gemfile, Gemfile.lock, vendor]
