@@ -3,25 +3,27 @@ layout: default
 ---
 <div class="home">
   <aside class="profile" aria-label="个人简介">
-    <div class="mascot" aria-hidden="true">
-      <span class="bubble bubble-one"></span>
-      <span class="bubble bubble-two"></span>
-      <span class="bubble bubble-three"></span>
-      <img src="{{ '/assets/jellyfish.png' | relative_url }}" width="96" height="96" alt="">
+    {% if site.profile.avatar %}
+    <img class="avatar" src="{{ site.profile.avatar | relative_url }}" width="196" height="196" alt="{{ site.profile.name | escape }}的头像">
+    {% endif %}
+    <h1>{{ site.profile.name | escape }}</h1>
+    <p class="profile-motto">{{ site.profile.motto | escape }}</p>
+    <div class="profile-email">
+      <span>邮箱</span>
+      {% if site.profile.email and site.profile.email != empty %}
+      <a href="mailto:{{ site.profile.email | escape }}">{{ site.profile.email | escape }}</a>
+      {% else %}
+      <span class="muted">[填写邮箱]</span>
+      {% endif %}
     </div>
-    <h1>{{ site.title | escape }}</h1>
-    <p>{{ site.description | escape }}</p>
-    <a href="{{ '/about/' | relative_url }}">关于我 →</a>
+    {% include tag-cloud.html %}
+    <section class="announcement" aria-labelledby="announcement-title">
+      <h2 id="announcement-title">公告</h2>
+      <p>{{ site.profile.announcement | default: '暂无公告' | escape }}</p>
+    </section>
   </aside>
 
   <div class="home-content">
-    <figure class="motto">
-      <blockquote>
-        <p>知人者智，自知者明。<br>胜人者有力，自胜者强。</p>
-      </blockquote>
-      <figcaption>——《道德经》第三十三章</figcaption>
-    </figure>
-
     <section class="home-section" aria-labelledby="featured">
       <div class="section-heading">
         <h2 id="featured">精选项目</h2>

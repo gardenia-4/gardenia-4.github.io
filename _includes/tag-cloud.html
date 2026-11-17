@@ -1,0 +1,26 @@
+{% assign documents = site.posts | concat: site.projects | concat: site.notes | concat: site.english %}
+{% assign tags = '' | split: ',' %}
+{% for document in documents %}
+  {% if document.tags %}{% assign tags = tags | concat: document.tags %}{% endif %}
+{% endfor %}
+{% assign remaining_tags = tags | uniq | sort_natural %}
+{% if remaining_tags.size > 0 %}
+<nav class="tag-cloud" aria-label="常用标签">
+  {% for rank in (1..10) %}
+    {% if remaining_tags.size == 0 %}{% break %}{% endif %}
+    {% assign top_count = 0 %}
+    {% for tag in remaining_tags %}
+      {% assign matches = tags | where_exp: 'entry', 'entry == tag' %}
+      {% if matches.size > top_count %}
+        {% assign top_tag = tag %}
+        {% assign top_count = matches.size %}
+      {% endif %}
+    {% endfor %}
+    {% if top_count == 0 %}{% break %}{% endif %}
+    {% if forloop.first %}{% assign max_count = top_count %}{% endif %}
+    {% assign size = top_count | times: 8 | divided_by: max_count | plus: 13 %}
+    <a style="--tag-size: {{ size }}px" href="{{ '/tags/' | relative_url }}#tag-{{ top_tag | url_encode | replace: '+', '%20' }}">{{ top_tag | escape }}</a>
+    {% assign remaining_tags = remaining_tags | where_exp: 'tag', 'tag != top_tag' %}
+  {% endfor %}
+</nav>
+{% endif %}

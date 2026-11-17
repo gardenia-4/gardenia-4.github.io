@@ -10,7 +10,7 @@
 <body>
   <a class="skip" href="#main">跳到正文</a>
   <header class="shell top">
-    <a class="brand" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>{{ site.title | escape }}</a>
+    <a class="brand" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
     <nav aria-label="主导航">
       {% assign current_section = page.url | remove_first: '/' | split: '/' | first %}
       {% for item in site.data.navigation %}
@@ -24,6 +24,6 @@
     </nav>
   </header>
   <main id="main" class="shell">{{ content }}</main>
-  <footer class="shell footer"><span class="wave" aria-hidden="true"></span>{{ site.title | escape }}</footer>
+  <footer class="shell footer"><img class="footer-cats" src="{{ '/assets/footer-cats.png' | relative_url }}" width="104" height="30" alt=""></footer>
 </body>
 </html>

@@ -27,28 +27,10 @@ main { min-height: 60vh; padding-block: clamp(2rem, 6vw, 4.5rem); }
 h1, h2, h3 { font-family: var(--serif); line-height: 1.35; overflow-wrap: anywhere; }
 h1 { font-size: clamp(2rem, 5vw, 3.25rem); margin: 0; }
 h2 { font-size: 1.35rem; }
-.home { display: grid; grid-template-columns: minmax(0, 13rem) minmax(0, 1fr); gap: clamp(2rem, 7vw, 5rem); }
+.home { display: grid; grid-template-columns: minmax(0, 12.25rem) minmax(0, 1fr); gap: clamp(2rem, 7vw, 5rem); }
 .profile { align-self: start; padding-bottom: 1.2rem; }
-.profile h1 { font-size: 1.55rem; }
 .profile p { color: var(--muted); margin-block: .5rem .7rem; }
-.profile a, .section-heading a, .english-link { font-size: .91rem; }
-.mascot { position: relative; width: 116px; height: 106px; margin-bottom: .75rem; }
-.mascot img { position: absolute; bottom: 0; left: 0; image-rendering: pixelated; }
-.bubble { position: absolute; z-index: 1; display: block; color: var(--muted); }
-.bubble-one { top: 8px; right: 19px; width: 8px; height: 8px; border: 2px solid; }
-.bubble-two { top: 1px; right: 7px; width: 4px; height: 4px; background: currentColor; }
-.bubble-three { top: 25px; right: 12px; width: 3px; height: 3px; background: currentColor; opacity: .65; }
-@media (prefers-reduced-motion: no-preference) {
-  .mascot img, .bubble { animation: float-once 1.25s ease-in-out both; }
-  .bubble { animation-delay: 100ms; }
-}
-@keyframes float-once {
-  50% { transform: translateY(-6px); }
-}
-.motto { margin: 0 0 2.4rem; }
-.motto blockquote { font-family: var(--serif); font-size: clamp(1.25rem, 4vw, 2.1rem); line-height: 1.8; font-weight: 600; margin: 0; border: 0; padding: 0; }
-.motto p { margin: 0; }
-.motto figcaption { color: var(--muted); margin-top: .65rem; font-size: .875rem; }
+.section-heading a, .english-link { font-size: .91rem; }
 .home-section + .home-section { margin-top: 2.25rem; }
 .section-heading { display: flex; align-items: baseline; flex-wrap: wrap; justify-content: space-between; gap: .2rem 1rem; border-bottom: 1px solid var(--line); padding-bottom: .65rem; }
 .section-heading h2 { margin: 0; }
@@ -65,8 +47,6 @@ h2 { font-size: 1.35rem; }
 .page-head .meta { margin-top: .8rem; }
 .muted, .page-head p { color: var(--muted); }
 .footer { display: flex; align-items: center; gap: .85rem; border-top: 1px solid var(--line); padding-block: 1.25rem; color: var(--muted); font-size: .9rem; }
-.wave { flex: 0 0 30px; height: 9px; color: var(--ink); }
-.wave::before { content: ""; display: block; width: 3px; height: 3px; box-shadow: 0 6px, 3px 3px, 6px 0, 9px 0, 12px 3px, 15px 6px, 18px 6px, 21px 3px, 24px 0, 27px 0; }
 input { display: block; width: min(100%, 32rem); font: inherit; padding: .5rem .75rem; color: var(--ink); background: var(--paper); border: 1px solid var(--muted); border-radius: .2rem; }
 img { max-width: 100%; height: auto; }
 pre { overflow-x: auto; padding: 1rem; background: #efede8; }
@@ -76,4 +56,18 @@ blockquote { border-left: 2px solid var(--line); margin-left: 0; padding-left: 1
   .profile { border-bottom: 1px solid var(--line); }
   .top nav { gap: .15rem 1rem; }
 }
-
+.avatar { display: block; width: 100%; max-width: 196px; aspect-ratio: 1; object-fit: cover; border: 1px solid var(--line); border-radius: 4px; margin-bottom: .85rem; }
+.profile h1 { font-size: 1.75rem; font-family: Georgia, serif; }
+.profile .profile-motto { margin-top: .1rem; font-size: .8rem; letter-spacing: .12em; }
+.profile-email { display: grid; margin-block: 1.25rem; font-size: .85rem; overflow-wrap: anywhere; }
+.profile-email > span:first-child { font-size: .75rem; color: var(--muted); }
+.tag-cloud, .announcement { border-top: 1px solid var(--line); padding-top: .9rem; }
+.tag-cloud { align-items: baseline; gap: .15rem .65rem; margin-bottom: 1rem; }
+.tag-cloud a { font-size: var(--tag-size); text-decoration: none; }
+.tag-cloud a:hover, .tag-cloud a:focus-visible { text-decoration: underline; }
+.announcement h2 { font-size: 1rem; margin: 0; }
+.announcement p { font-size: .85rem; margin: .25rem 0 0; }
+.footer-cats { display: block; width: 104px; height: auto; image-rendering: pixelated; }
+@media (max-width: 42rem) {
+  .avatar { width: 144px; }
+}

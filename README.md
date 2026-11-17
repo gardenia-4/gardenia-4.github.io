@@ -7,7 +7,7 @@
 | 位置 | 用途 |
 | --- | --- |
 | `_config.yml` | 站点名称、简介和发布地址 |
-| `about.md` | 姓名或昵称、自我介绍、方向及公开链接 |
+| `_config.yml` 的 `profile` | 左栏昵称、副标题、头像、邮箱和公告 |
 | `_data/navigation.yml` | 导航的顺序和栏目名 |
 | `_posts/` | 博客文章，使用 `YYYY-MM-DD-slug.md` 命名 |
 | `_projects/`、`_notes/`、`_english/` | 项目、学习笔记和英语学习，使用 `slug.md` 命名 |
