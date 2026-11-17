@@ -1,48 +1,96 @@
-# 个人主页
+# Fern 的个人主页 · 使用教程
 
-面向长期学习、产品经理与 AI 求职作品整理，以及未来技术实践的个人站点。使用 GitHub Pages 原生 Jekyll 构建。页面和内容均保存在仓库中，搜索在浏览器内运行。
+[访问博客](https://gardenia-4.github.io/) · [查看发布进度](https://github.com/gardenia-4/gardenia-4.github.io/actions)
 
-## 开始编辑
+## 在 GitHub 网页写作
 
-| 位置 | 用途 |
-| --- | --- |
-| `_config.yml` | 站点名称、简介和发布地址 |
-| `_config.yml` 的 `profile` | 左栏昵称、副标题、头像、邮箱和公告 |
-| `_data/navigation.yml` | 导航的顺序和栏目名 |
-| `_posts/` | 博客文章，使用 `YYYY-MM-DD-slug.md` 命名 |
-| `_projects/`、`_notes/`、`_english/` | 项目、学习笔记和英语学习，使用 `slug.md` 命名 |
-| `templates/` | 可复制的文章模板和项目模板 |
-| `assets/` | 样式与搜索脚本 |
+1. 在仓库首页打开对应的文件夹，点击 **Add file → Create new file**。修改已有内容时，打开文件并点击铅笔图标。
+2. 填写文件名，粘贴下方的 Markdown 示例，再改成自己的内容。
+3. 点击 **Commit changes**，填写本次更新的说明，选择直接提交到 `main`。
+4. 在 **Actions** 找到本次提交的 **pages build and deployment**。出现绿色勾号后，刷新博客查看更新。
 
-文章建议只选一个主分类。在文件顶部填写 `categories: [产品]`、`[AI]`、`[技术]` 或 `[阅读与思考]`。标签使用 YAML 列表，例如 `tags: [AI, 原型]`。条目有了标题和摘要后，会自动进入搜索索引。搜索支持多个空格分隔的关键词，会显示包含所有关键词的结果。
+仓库和网站都公开。提交前请确认文档、图片和邮箱都可以公开。
 
-想在首页展示项目时，在项目文件顶部设置 `featured: true`。首页最多展示三个精选项目，按日期从新到旧排列。站名可在 `_config.yml` 的 `title` 修改。复制模板后，替换标题、日期、摘要、分类和标签，再写正文。日期使用 `YYYY-MM-DD`，slug 建议用小写英文和短横线。发布前可移除或替换各栏目中的示例。站内链接使用 `{{ '/projects/' | relative_url }}` 这样的写法，以兼容仓库子路径。
+## 选栏目
 
-归档页自动按年份倒序汇总文章、学习笔记和英语学习。新增内容后，它会随构建更新。笔记请在文件顶部填写 `date: YYYY-MM-DD`。
+| 内容 | 文件夹 | 文件名示例 |
+| --- | --- | --- |
+| 产品、AI、技术、读书心得 | [`_posts/`](_posts/) | `2026-11-17-ai-notes.md` |
+| 项目方案、原型、复盘 | [`_projects/`](_projects/) | `reading-assistant.md` |
+| 学习笔记、练习、实验记录 | [`_notes/`](_notes/) | `llm-evaluation.md` |
+| 英语阅读、口语、面试表达 | [`_english/`](_english/) | `interview-expressions.md` |
 
-## 在本机预览
+### 写一篇文章
 
-准备 Ruby 3.3、Bundler 和构建工具。Windows 可使用带 Devkit 的 RubyInstaller。解压后进入包含 `_config.yml` 的目录，执行：
+在 `_posts/` 新建文件，文件名以实际发布日期开头，格式为 `YYYY-MM-DD-英文短名.md`。把下面的示例复制进去。开头两行 `---` 之间填写文章信息，下面写正文。
 
-```sh
-bundle install
-bundle exec jekyll serve
+```markdown
+---
+title: "我的第一篇 AI 学习记录"
+description: "记录一个问题、一次尝试和下一步。"
+categories: [AI]
+tags: [AI, 学习记录]
+---
+
+## 我想弄明白什么
+
+在这里写下你的问题。
+
+## 我做了什么
+
+记录读过的资料、试过的方法和观察到的结果。
+
+## 下一步
+
+写下还想验证的问题。
 ```
 
-打开终端给出的本地地址，例如 `http://127.0.0.1:4000`。修改 `_config.yml` 后重启预览。仅构建时可执行 `bundle exec jekyll build`，成品位于 `_site/`。
+博客主分类可用 `产品`、`AI`、`技术`、`阅读与思考`。同一个主题尽量复用已有标签，例如统一使用 `AI`。
 
-## 发布到 GitHub Pages
+### 写笔记或展示项目
 
-1. 确定 GitHub 用户名、仓库名，以及使用个人主页还是项目站点。若使用 GitHub Free，可创建公开仓库。
-2. 修改 `_config.yml` 中的地址。保留引号，并将下表占位符替换成真实值。
+- 学习笔记和英语学习使用 `英文短名.md` 命名。在文件顶部填写 `title`、`description`、`date: YYYY-MM-DD` 和 `tags`，省去文章专用的 `categories`。
+- 展示项目时可以复制 [项目模板](templates/projects.md)。在开头填写 `featured: true`，项目就能参与首页精选排序。首页最多显示三个精选项目，按日期从新到旧排列。改为 `featured: false` 后，项目仍可在项目页查看。
+- 文章、学习笔记和英语学习会自动进入[归档](https://gardenia-4.github.io/archive/)，按年份从新到旧排列。首页词云最多显示 10 个常用标签。搜索会匹配标题、摘要、分类和标签。
 
-   | 站点类型 | 仓库名 | `url` | `baseurl` |
-   | --- | --- | --- | --- |
-   | 个人主页 | `<用户名>.github.io` | `https://<用户名>.github.io` | `""` |
-   | 项目站点 | `<仓库名>` | `https://<用户名>.github.io` | `/<仓库名>` |
+## 换头像、改邮箱或发公告
 
-3. 将本目录内的全部源码（包括以 `_` 开头的目录）提交到仓库 `main` 分支根目录。仓库首页应直接看到 `_config.yml`。已有仓库时，把源码合并进目标分支。若使用其他分支，下一步选择该分支。
-4. 在仓库打开 **Settings → Pages**。在 **Build and deployment** 选择 **Deploy from a branch**，选 **main → /(root)**，保存。
-5. 在 **Actions** 查看首次构建。部署成功后，在 **Settings → Pages** 点击 **Visit site**。后续更新向发布分支提交即可。
+在 [`_config.yml`](_config.yml) 找到 `profile`：
 
-[GitHub Pages 发布源官方说明](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) · [本地预览官方说明](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)
+| 想改什么 | 编辑哪个字段 |
+| --- | --- |
+| 昵称和副标题 | `name`、`motto` |
+| 头像 | 在 [`assets/`](assets/) 上传图片，把 `avatar` 改成对应路径，例如 `/assets/fern.png` |
+| 邮箱 | 在 `email` 的引号里填入愿意公开的地址。留空会显示占位 |
+| 公告 | 修改 `announcement`。文案有冒号等符号时，可以用双引号包起来 |
+
+顶部的 **Nice to meet you!** 在 [`_layouts/default.html`](_layouts/default.html)。导航在 [`_data/navigation.yml`](_data/navigation.yml)，样式在 [`assets/site.css`](assets/site.css)。
+
+## 偶尔切回本地编辑
+
+在网页提交后，本地副本需要手动同步。如果本地没有未提交的改动，在仓库目录运行：
+
+```powershell
+git status --short
+git pull --ff-only origin main
+```
+
+本地编辑完成后，检查清单，再提交所需文件：
+
+```powershell
+git status --short
+git add .
+git diff --cached --stat
+git commit -m "更新博客内容"
+git push origin main
+```
+
+使用 GitHub Desktop 时，可通过 **Fetch origin → Pull origin** 同步，再通过 **Commit to main → Push origin** 发布。
+
+## 预览和排查
+
+- **本机预览**。安装 Ruby 和 Bundler 后，在仓库根目录运行 `bundle install`，再运行 `bundle exec jekyll serve`。打开终端显示的本地网址。
+- **线上没更新**。检查 Actions 中对应提交的部署是否成功。绿勾出现后，可以按 **Ctrl + F5** 刷新页面。
+- **文章找不到**。检查文件是否在 `_posts/`，文件名日期是否正确，顶部的两行 `---` 是否完整。
+- **部署失败**。打开 Actions 里标红的任务，展开失败步骤，按日志里的文件名和行号检查。
+- **发布设置**。本站从 `main` 分支根目录通过 GitHub Pages 构建。可在仓库的 **Settings → Pages** 查看。
