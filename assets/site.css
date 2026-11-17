@@ -62,8 +62,8 @@ blockquote { border-left: 2px solid var(--line); margin-left: 0; padding-left: 1
 .profile-email { display: grid; margin-block: 1.25rem; font-size: .85rem; overflow-wrap: anywhere; }
 .profile-email > span:first-child { font-size: .75rem; color: var(--muted); }
 .tag-cloud, .announcement { border-top: 1px solid var(--line); padding-top: .9rem; }
-.tag-cloud { align-items: baseline; gap: .15rem .65rem; margin-bottom: 1rem; }
-.tag-cloud a { font-size: var(--tag-size); text-decoration: none; }
+.tag-cloud { align-items: baseline; gap: .25rem .72rem; margin-bottom: 1rem; }
+.tag-cloud a { font-size: var(--tag-size); line-height: 1.45; text-decoration: none; overflow-wrap: anywhere; }
 .tag-cloud a:hover, .tag-cloud a:focus-visible { text-decoration: underline; }
 .announcement h2 { font-size: 1rem; margin: 0; }
 .announcement p { font-size: .85rem; margin: .25rem 0 0; }

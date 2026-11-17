@@ -10,7 +10,7 @@
 <body>
   <a class="skip" href="#main">跳到正文</a>
   <header class="shell top">
-    <a class="brand" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+    <a class="brand" href="{{ '/' | relative_url }}"><span lang="en">Nice to meet you!</span></a>
     <nav aria-label="主导航">
       {% assign current_section = page.url | remove_first: '/' | split: '/' | first %}
       {% for item in site.data.navigation %}
