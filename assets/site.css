@@ -78,3 +78,7 @@ blockquote { border-left: 2px solid var(--line); margin-left: 0; padding-left: 1
   .archive-entries li { grid-template-columns: 3rem minmax(0, 1fr); gap: .15rem .5rem; }
   .archive-kind { grid-column: 2; }
 }
+.prose table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin-block: 1.25rem; font-size: .95rem; }
+.prose th, .prose td { border: 1px solid var(--line); padding: .65rem .8rem; text-align: left; vertical-align: top; min-width: 7rem; }
+.prose th { background: #efede8; font-weight: 700; }
+.prose td:last-child { min-width: 16rem; }
